@@ -8,6 +8,10 @@ django-shortcircuit
 .. image:: https://travis-ci.org/comandrei/django-shortcircuit.png?branch=master
     :target: https://travis-ci.org/comandrei/django-shortcircuit
 
+.. image:: https://landscape.io/github/comandrei/django-shortcircuit/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/comandrei/django-shortcircuit/master
+   :alt: Code Health
+
 Shortcircuit Django middlewares for a list of views you want skipped
 
 Documentation
