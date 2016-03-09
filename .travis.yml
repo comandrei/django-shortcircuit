@@ -5,17 +5,24 @@ language: python
 python:
   - "3.5"
   - "3.4"
-  - "3.3"
   - "2.7"
 
 before_install:
   - pip install codecov
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements-test.txt
+install:
+  - pip install pytest-django "Django${DJANGO_VERSION}"
+  - pip install -r requirements-test.txt
 
 # command to run tests using coverage, e.g. python setup.py test
 script: coverage run --source shortcircuit runtests.py
+
+env:
+  matrix:
+    - DJANGO_VERSION=">=1.7,<1.8"
+    - DJANGO_VERSION=">=1.8,<1.9"
+    - DJANGO_VERSION=">=1.9,<1.10"
 
 after_success:
   - codecov
