@@ -3,7 +3,8 @@
 History
 -------
 
-0.1.0 (2016-03-09)
+0.1.0 (2016-05-15)
 ++++++++++++++++++
 
-* First release on PyPI.
+* First release on PyPI
+* Includes shortcircuiting middleware, bypassing process_view only

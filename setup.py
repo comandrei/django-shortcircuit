@@ -21,21 +21,6 @@ def get_version(*file_paths):
 
 version = get_version('shortcircuit', '__init__.py')
 
-if sys.argv[-1] == 'publish':
-    try:
-        import wheel
-    except ImportError:
-        print('Wheel library missing. Please run "pip install wheel"')
-        sys.exit()
-    os.system('python setup.py sdist upload')
-    os.system('python setup.py bdist_wheel upload')
-    sys.exit()
-
-if sys.argv[-1] == 'tag':
-    print("Tagging the version on github:")
-    os.system("git tag -a %s -m 'version %s'" % (version, version))
-    os.system("git push --tags")
-    sys.exit()
 
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
@@ -60,6 +45,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
+        'Framework :: Django :: 1.7',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
         'Intended Audience :: Developers',
