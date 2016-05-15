@@ -28,12 +28,23 @@ Install django-shortcircuit::
 
 Then use it in a project::
 
-    import shortcircuit
+    Include it in your middleware classes, BEFORE middlewares you potentially want skipped
+    ::
+       MIDDLEWARE_CLASSES = ( ... 'shortcircuit.middleware.ShortCircuitMiddleware', ... )
+
+    Define a list of urlpatterns you want skipped
+
+    ::
+       SHORTCIRCUIT_URL_PATTERNS = (r'^/skip_me', r'^/also_me')
+
+
 
 Features
 --------
 
-* TODO
+* This middleware allows skipping middlewares that aren't usefull for certain URL patterns.
+  It's targeted to applications where there is heavy processing done in middleware and for various reasons (code ownership, lack of time) it's hard to do proper refactoring
+  Bear in mind, this only skips process_view methods of middlewares used after ShortCircuitMiddleware
 
 Running Tests
 --------------
@@ -41,10 +52,8 @@ Running Tests
 Does the code actually work?
 
 ::
+   tox -e py27-django19
 
-    source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install -r requirements-test.txt
-    (myenv) $ python runtests.py
 
 Credits
 ---------
