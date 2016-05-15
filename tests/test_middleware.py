@@ -26,7 +26,7 @@ class MiddlewareTest(TestCase):
     def test_shortcircuited_view(self):
         self.middleware.process_request(self.request)
         self.assertEqual(self.middleware.process_view(self.request, mock_view, [], {}), "View Result")
-    @override_settings(SHORTCIRCUIT_URL_PATTERNS="mistake")
+    @override_settings(SHORTCIRCUIT_URL_PATTERNS=None)
     def test_invalid_config(self):
         with self.assertRaises(ImproperlyConfigured):
             self.middleware.process_request(self.request)
